@@ -12,7 +12,7 @@ development:
   adapter: postgresql
   encoding: unicode
   database: rainmafia_development
-  pool: 5
+  pool: 10
   username: postgres
   password:  
   timeout: 5000
@@ -39,7 +39,7 @@ test: &test
   adapter: postgresql
   encoding: unicode
   database: rainmafia_test
-  pool: 5
+  pool: 10
   username: postgres
   password:
 
@@ -47,7 +47,7 @@ production:
   adapter: postgresql
   encoding: unicode
   database: rainmafia_production
-  pool: 5
+  pool: 10
   username: postgres
   password:
 
