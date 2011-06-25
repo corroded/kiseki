@@ -1,3 +1,13 @@
+GIT
+  remote: https://github.com/chriseppstein/compass.git
+  revision: 696d84562d63a3e799efa73a06ba9f24b8d5b73a
+  branch: rails31
+  specs:
+    compass (0.11.3.rails.0.696d845)
+      chunky_png (~> 1.1)
+      fssm (>= 0.2.7)
+      sass (~> 3.1)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -46,10 +56,6 @@ GEM
     childprocess (0.1.9)
       ffi (~> 1.0.6)
     chunky_png (1.2.0)
-    compass (0.11.3)
-      chunky_png (~> 1.2)
-      fssm (>= 0.2.7)
-      sass (~> 3.1)
     compass-960-plugin (0.10.4)
       compass (>= 0.10.0)
     configuration (1.3.1)
@@ -59,11 +65,11 @@ GEM
       gherkin (~> 2.4.1)
       json (>= 1.4.6)
       term-ansicolor (>= 1.0.5)
-    cucumber-rails (1.0.0)
+    cucumber-rails (1.0.1)
       capybara (>= 1.0.0)
       cucumber (~> 1.0.0)
-      nokogiri (>= 1.4.4)
-      rack-test (>= 0.5.7)
+      nokogiri (>= 1.4.6)
+      rack-test (>= 0.6.0)
     database_cleaner (0.6.7)
     devise (1.4.0)
       bcrypt-ruby (~> 2.1.2)
@@ -196,7 +202,7 @@ PLATFORMS
 DEPENDENCIES
   annotate
   capybara (>= 1.0.0)
-  compass
+  compass!
   compass-960-plugin
   cucumber
   cucumber-rails (>= 1.0.0)

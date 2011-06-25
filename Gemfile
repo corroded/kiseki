@@ -17,7 +17,7 @@ gem 'jquery-rails'
 #layout
 gem "haml", ">= 3.1.2"
 gem "haml-rails", ">= 0.3.4", :group => :development
-gem "compass"
+gem 'compass', :git => 'https://github.com/chriseppstein/compass.git', :branch => 'rails31'
 gem "html5-boilerplate"
 gem "compass-960-plugin"
 gem "formtastic"
