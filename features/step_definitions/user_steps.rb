@@ -68,3 +68,8 @@ end
 Given /^I am not logged in$/ do
   visit('/users/sign_out') # ensure that at least
 end
+
+Then /^I should have a character with name "([^"]*)"$/ do |char_name|
+  @character = Character.find_by_name(char_name)
+  @character.should_not be_nil
+end
