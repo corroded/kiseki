@@ -10,16 +10,6 @@ describe User do
     }
   end
   
-  describe "character generation" do
-    before(:each) do
-      @user = Factory(:user)
-    end
-    
-    it "should create a character with default name: email's avatar" do
-      @user.character.name.should == "#{@user.email}'s avatar"
-    end
-  end
-  
   it "should create a new instance given a valid attribute" do
     User.create!(@attr)
   end

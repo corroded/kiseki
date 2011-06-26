@@ -1,12 +1,20 @@
 class Character < ActiveRecord::Base
   
+  DEFAULT_STAT = 5
+  
   belongs_to :user
   
-  after_create :generate_character
+  before_create :generate_character
   
   private
     def generate_character
-      puts "MY USER'S EMAIL: #{self.user.email}"
+      self.hp = DEFAULT_STAT
+      self.strength = DEFAULT_STAT
+      self.magic = DEFAULT_STAT
+      self.dexterity = DEFAULT_STAT
+      self.charisma = DEFAULT_STAT
+      self.intelligence = DEFAULT_STAT
+      self.defense = DEFAULT_STAT
     end
 end
 # == Schema Information
