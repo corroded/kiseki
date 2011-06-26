@@ -11,4 +11,12 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
+  
+  after_create :generate_character
+  
+  private
+    def generate_character
+      self.create_character(:name => "#{email}'s avatar")
+    end
+  
 end
