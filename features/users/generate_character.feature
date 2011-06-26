@@ -12,3 +12,7 @@ Feature: Generate character
     And I press "Sign up"
     Then I should see "Welcome! You have signed up successfully."
     And I should have a character with name "imacaterpillar@gmail.com's avatar"
+    
+  Scenario: Users sees augmented stats based on rainmaker API results
+    Given I am signed in as "imacaterpillar@gmail.com/tester"
+    # And I am at the 
