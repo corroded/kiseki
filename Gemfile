@@ -25,7 +25,7 @@ gem "devise", ">= 1.3.4"
 
 group :development do
   gem "rails-footnotes", ">= 3.7"
-  gem 'annotate'
+  gem 'annotate', :git => "https://github.com/ctran/annotate_models.git"
 end
 
 group :test do
