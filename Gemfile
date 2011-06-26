@@ -23,6 +23,10 @@ gem "compass-960-plugin"
 gem "formtastic"
 gem "devise", ">= 1.3.4"
 
+#misc APIs
+gem 'rainmaker'
+gem 'twitter'
+
 group :development do
   gem "rails-footnotes", ">= 3.7"
   gem 'annotate', :git => "https://github.com/ctran/annotate_models.git"
