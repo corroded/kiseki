@@ -27,6 +27,13 @@ gem "devise", ">= 1.3.4"
 gem 'rainmaker'
 gem 'twitter'
 
+#heroku
+gem 'heroku'
+
+group :production do
+  gem 'therubyracer-heroku', '0.8.1.pre3'
+end
+
 group :development do
   gem "rails-footnotes", ">= 3.7"
   gem 'annotate', :git => "https://github.com/ctran/annotate_models.git"
