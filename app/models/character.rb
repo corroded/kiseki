@@ -1,7 +1,7 @@
 class Character < ActiveRecord::Base
 
   DEFAULT_STAT = 5
-  ALL_STATS = ['hp', 'magic', 'dexterity', 'strength', 'charisma', 'wit', 'defense']
+  ALL_STATS = ['charisma', 'wit', 'stalkability']
 
   belongs_to :user
 
@@ -15,6 +15,7 @@ class Character < ActiveRecord::Base
     self.charisma += bonus_charisma(rainmaker_response.social_profiles)
 
     rainmaker_response
+    self.stalkability        += bonus_stalkability(rainmaker_response.social_profiles)
   end
 
   def bonus_charisma(social_profiles)
@@ -31,19 +32,23 @@ class Character < ActiveRecord::Base
     end
   end
   
+  def bonus_wit
+    
+  end
+  
+  def bonus_stalkability
+    
+  end
+  
   private
     def generate_character
-      self.hp = DEFAULT_STAT
-      self.strength = DEFAULT_STAT
-      self.magic = DEFAULT_STAT
-      self.dexterity = DEFAULT_STAT
       self.charisma = DEFAULT_STAT
       self.wit = DEFAULT_STAT
-      self.defense = DEFAULT_STAT
+      self.stalkability = DEFAULT_STAT
     end
 
-
 end
+
 # == Schema Information
 #
 # Table name: characters
@@ -57,7 +62,7 @@ end
 #  dexterity    :integer
 #  charisma     :integer
 #  intelligence :integer
-#  defense      :integer
+#  stalkability      :integer
 #  created_at   :datetime
 #  updated_at   :datetime
 #  user_id      :integer
