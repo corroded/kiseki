@@ -15,4 +15,7 @@ Feature: Generate character
     
   Scenario: Users sees augmented stats based on rainmaker API results
     Given I am signed in as "imacaterpillar@gmail.com/tester"
-    # And I am at the 
+    And I am at the welcome page
+    When I click "Empower Avatar"
+    Then I should be on the empower page
+    And I should see the generated stats
