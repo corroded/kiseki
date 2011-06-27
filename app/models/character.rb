@@ -1,18 +1,19 @@
 class Character < ActiveRecord::Base
-  
+
   DEFAULT_STAT = 5
-  
+  ALL_STATS = ['hp', 'magic', 'dexterity', 'strength', 'charisma', 'wit', 'defense']
+
   belongs_to :user
-  
+
   before_create :generate_character
+
 
   def generate_rainmaker_stats
     rainmaker_response = Rainmaker.person(user.email)
     
-    puts "OLD CHARISMA: #{self.charisma}"
     # for every 100 followers in twitter, +1 charisma
     self.charisma += bonus_charisma(rainmaker_response.social_profiles)
-    puts "NEW CHARISMA: #{self.charisma}"
+
     rainmaker_response
   end
 
@@ -37,11 +38,11 @@ class Character < ActiveRecord::Base
       self.magic = DEFAULT_STAT
       self.dexterity = DEFAULT_STAT
       self.charisma = DEFAULT_STAT
-      self.intelligence = DEFAULT_STAT
+      self.wit = DEFAULT_STAT
       self.defense = DEFAULT_STAT
     end
-    
-    
+
+
 end
 # == Schema Information
 #

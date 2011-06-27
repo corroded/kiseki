@@ -1,8 +1,6 @@
 require 'spec_helper'
 
-describe Character do
-  DEFAULT_STAT = 5
-  
+describe Character do  
   before(:each) do
     @user = Factory(:user)
     @character = @user.character
@@ -14,19 +12,10 @@ describe Character do
     end
 
     it "should have default stats" do
-      @character.hp.should == DEFAULT_STAT &&
-      @character.magic.should == DEFAULT_STAT &&
-      @character.dexterity.should == DEFAULT_STAT &&
-      @character.strength.should == DEFAULT_STAT &&
-      @character.charisma.should == DEFAULT_STAT &&
-      @character.intelligence.should == DEFAULT_STAT &&
-      @character.defense.should == DEFAULT_STAT
+      Character::ALL_STATS.each do |stat|
+        @character.send(stat.to_sym).should == Character::DEFAULT_STAT
+      end
     end
 
-  end
-  
-  describe "character augmented stats" do
-    it "should get augmented stats after create" do
-    end
   end
 end
