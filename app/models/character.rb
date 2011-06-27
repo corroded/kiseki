@@ -7,24 +7,23 @@ class Character < ActiveRecord::Base
 
   before_create :generate_character
 
-
   def generate_rainmaker_stats
     rainmaker_response = Rainmaker.person(user.email)
     
     # for every 100 followers in twitter, +1 charisma
-    self.charisma += bonus_charisma(rainmaker_response.social_profiles)
-
-    rainmaker_response
+    self.charisma            += bonus_charisma(rainmaker_response.social_profiles)
+    self.wit                 += bonus_wit(rainmaker_response.social_profiles)
     self.stalkability        += bonus_stalkability(rainmaker_response.social_profiles)
+    
+    self.save
+    # rainmaker_response
   end
 
   def bonus_charisma(social_profiles)
     twitter = social_profiles.select{ |sp| sp.type.eql?("twitter") }.first
-    puts "has twitter? #{twitter}"
     begin
       if twitter
         followers_count = Twitter.user(twitter.username).followers_count
-        puts "followers count #{followers_count} and total #{followers_count/100}"
         return followers_count < 100 ? 1 : (followers_count/100)
       end
     rescue
