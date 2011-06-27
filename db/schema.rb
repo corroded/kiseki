@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110626094220) do
+ActiveRecord::Schema.define(:version => 20110627175029) do
 
   create_table "characters", :force => true do |t|
     t.string   "name"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(:version => 20110626094220) do
     t.integer  "magic"
     t.integer  "dexterity"
     t.integer  "charisma"
-    t.integer  "intelligence"
+    t.integer  "wit"
     t.integer  "defense"
     t.datetime "created_at"
     t.datetime "updated_at"
