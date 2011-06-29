@@ -1,0 +1,23 @@
+/* line 5, ../../../app/assets/stylesheets/pages/home.css.sass */
+body.home {
+  font-size: 14px;
+}
+/* line 8, ../../../app/assets/stylesheets/pages/home.css.sass */
+body.home p {
+  margin-bottom: 15px;
+}
+/* line 12, ../../../app/assets/stylesheets/pages/home.css.sass */
+body.home ul.stat-list {
+  margin-left: 30px;
+  list-style-position: inside;
+  list-style-type: disc;
+}
+/* line 18, ../../../app/assets/stylesheets/pages/home.css.sass */
+body.home ul.stat-list li {
+  margin-bottom: 10px;
+}
+/* line 22, ../../../app/assets/stylesheets/pages/home.css.sass */
+body.home ul.stat-list li strong {
+  font-size: 18px;
+  font-weight: bold;
+}
