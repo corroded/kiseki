@@ -1,6 +1,6 @@
 !!! 5
 %head
-  = render "layouts/head", :stylesheet_partial => "layouts/stylesheets"
+  = render "layouts/head"
 
 %body{ :class => "#{controller.controller_name}" }
   #container
@@ -14,6 +14,3 @@
       
     %footer#footer
       = render "layouts/footer"
-      
-  -# Javascript at the bottom for fast page loading
-  = render "layouts/javascripts"
