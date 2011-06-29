@@ -10,7 +10,7 @@ class Character < ActiveRecord::Base
   def generate_rainmaker_stats
     rainmaker_response = Rainmaker.person(user.email)
     
-    # for every 100 followers in twitter, +1 charisma
+    # for every 10 followers in twitter, +1 charisma
     self.charisma            += bonus_charisma(rainmaker_response.social_profiles)
     
     # for every status message in fb and twitter?
