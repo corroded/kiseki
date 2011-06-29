@@ -1,1 +1,57 @@
-%h3 Home
+%h3 What is Kiseki?
+
+%p
+  Right now, Kiseki is a tool to create your very own internet avatar. No, it's not just a picture of you, or a "tinier" you. It is an avatar that represents who you really are - in the internet.
+  
+%p
+  Think of a character in a role playing game or a fantasy novel. Thought of someone already? What if you were that someone, thrust into the internet to save a princess or to vanquish a dragon? You can be that person in Kiseki.
+  
+%p
+  Right now, Kiseki is still nurturing itself and trying to grow. As more avatars emerge in this world, the more the world grows and the more you will see its potential.
+
+%h3 What do I do for now?
+
+%p
+  You just need to supply an email address (and password - so you can login!). When you register, you will be creating a character avatar for yourself. Of course, you will be a lowly character at first. But when you enchant it with Kiseki, your character can gain more stats in an instant!
+  
+%h3 What stats are there?
+
+%p
+  Currently there are three stats that describe your character(it will grow to 5-10 in the future. The possibilities are endless in Kiseki!):
+  
+%ul.stat-list
+  %li
+    %strong Charisma
+    %span
+      %em
+        = "- This grows based on the number of your followers in"
+        = link_to "Twitter", "http://twitter.com"
+  %li
+    %strong Wit
+    %span
+      %em 
+        = "- This grows based on the number of your tweets"
+        (this will be eventually optional to include facebook statuses)
+  %li
+    %strong Stalkability
+    %span
+      %em
+        = "- based on your internet visibility. The more social profiles you have, the higher this will go"
+        %br
+        (Keep in mind that lacking certain social profiles actually decreases your stalkability, but don't fret! This doesn't mean it's a bad thing.)
+      
+%h3 How will you know about these things?
+  
+%p
+  Via the
+  = link_to "Rainmaker API", "http://rainmaker.cc/"
+  
+%p
+  Basically, it just searches the internet for your public information based on your email. To be clear, you're giving the email(and your data, since it is public) freely and Rainmaker just compiles and generates a character based on those data.
+      
+%h3 Still interested?
+
+%p
+  Hop in and 
+  %strong= link_to "sign up now", new_user_registration_path
+  to receive updates and get your bonus starting points!
