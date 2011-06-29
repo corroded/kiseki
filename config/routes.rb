@@ -4,6 +4,10 @@ Kiseki::Application.routes.draw do
   root :to => "home#index"
 
   devise_for :users
+  
+  namespace :user do
+    root :to => "home#welcome"
+  end
 
   resources :users, :only => :show
 
