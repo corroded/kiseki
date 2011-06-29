@@ -18,9 +18,9 @@ gem 'jquery-rails'
 gem "haml", ">= 3.1.2"
 gem "haml-rails", ">= 0.3.4", :group => :development
 gem 'compass', :git => 'https://github.com/chriseppstein/compass.git', :branch => 'rails31'
-gem "html5-boilerplate"
-gem "compass-960-plugin"
 gem "formtastic"
+gem 'html5-rails', :git => 'git://github.com/sporkd/html5-rails.git'
+
 gem "devise", ">= 1.3.4"
 
 #misc APIs
@@ -38,6 +38,7 @@ group :development do
   gem "rails-footnotes", ">= 3.7"
   gem 'annotate', :git => "https://github.com/ctran/annotate_models.git"
   gem "rspec-rails", ">= 2.0.1"
+  gem 'vcr'
 end
 
 group :test do
