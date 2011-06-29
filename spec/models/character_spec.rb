@@ -47,10 +47,6 @@ end
 #  id           :integer         not null, primary key
 #  name         :string(255)
 #  type_id      :integer
-#  hp           :integer
-#  strength     :integer
-#  magic        :integer
-#  dexterity    :integer
 #  charisma     :integer
 #  wit          :integer
 #  stalkability :integer

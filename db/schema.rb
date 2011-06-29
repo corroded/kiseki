@@ -10,15 +10,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110627193045) do
+ActiveRecord::Schema.define(:version => 20110629153926) do
 
   create_table "characters", :force => true do |t|
     t.string   "name"
     t.integer  "type_id"
-    t.integer  "hp"
-    t.integer  "strength"
-    t.integer  "magic"
-    t.integer  "dexterity"
     t.integer  "charisma"
     t.integer  "wit"
     t.integer  "stalkability"

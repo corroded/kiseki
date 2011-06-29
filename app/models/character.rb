@@ -28,7 +28,7 @@ class Character < ActiveRecord::Base
     begin
       if twitter
         followers_count = Twitter.user(twitter.username).followers_count
-        return followers_count < 100 ? 1 : (followers_count/100)
+        return followers_count < 10 ? 1 : (followers_count/10)
       else
         0
       end
@@ -76,13 +76,9 @@ end
 #  id           :integer         not null, primary key
 #  name         :string(255)
 #  type_id      :integer
-#  hp           :integer
-#  strength     :integer
-#  magic        :integer
-#  dexterity    :integer
 #  charisma     :integer
-#  intelligence :integer
-#  stalkability      :integer
+#  wit          :integer
+#  stalkability :integer
 #  created_at   :datetime
 #  updated_at   :datetime
 #  user_id      :integer
