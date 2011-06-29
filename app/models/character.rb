@@ -12,8 +12,12 @@ class Character < ActiveRecord::Base
     
     # for every 100 followers in twitter, +1 charisma
     self.charisma            += bonus_charisma(rainmaker_response.social_profiles)
+    
+    # for every status message in fb and twitter?
     self.wit                 += bonus_wit(rainmaker_response.social_profiles)
-    self.stalkability        += bonus_stalkability(rainmaker_response.social_profiles)
+    
+    # for every social profile, +1
+    self.stalkability        += bonus_stalkability(rainmaker_response)
     
     self.save
     # rainmaker_response
@@ -25,6 +29,8 @@ class Character < ActiveRecord::Base
       if twitter
         followers_count = Twitter.user(twitter.username).followers_count
         return followers_count < 100 ? 1 : (followers_count/100)
+      else
+        0
       end
     rescue
       0
@@ -32,11 +38,14 @@ class Character < ActiveRecord::Base
   end
   
   def bonus_wit
-    
   end
   
-  def bonus_stalkability
-    
+  def bonus_stalkability(response)
+    if response 
+      social_profile_count(response) + social_photo_count(response)
+    else
+      -5
+    end
   end
   
   private
@@ -44,6 +53,18 @@ class Character < ActiveRecord::Base
       self.charisma = DEFAULT_STAT
       self.wit = DEFAULT_STAT
       self.stalkability = DEFAULT_STAT
+    end
+    
+    def social_profile_count(response)
+      begin
+        (response.social_profiles && response.social_profiles.count > 1) ? response.social_profiles.count : -1
+      rescue
+        0
+      end
+    end
+    
+    def social_photo_count(response)
+      (response.photos && response.photos.count > 1) ? response.photos.count : -1
     end
 
 end
