@@ -55,6 +55,16 @@ class Character < ActiveRecord::Base
     end
   end
   
+  def get_photos
+    begin
+      response = Rainmaker.person(user.email)
+      
+      photos = response.try(:photos).inject([]) { |photo_array, photo| photo_array << photo unless photo_array.map(&:type).include?(photo.type); photo_array }
+    rescue
+      []
+    end
+  end
+  
   private
     def generate_character
       rainmaker_response = Rainmaker.person(user.email)

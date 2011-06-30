@@ -5,7 +5,11 @@ Kiseki::Application.routes.draw do
 
   devise_for :users
   
-  resources :users, :only => [:show]
+  resources :users, :only => [:show] do
+    member do
+      get 'update_photo_url'
+    end
+  end
   
   match "/welcome" => "users#welcome"
 

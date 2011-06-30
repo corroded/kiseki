@@ -18,7 +18,5 @@
         %td.bonus.value= bonus_value_of(stat)
         %td.bonus.value= total_value_of(stat)
 
-
-  .character-photos
-    
-    
+  = render :partial => "photos", :locals => {:photos => @photos}
+        

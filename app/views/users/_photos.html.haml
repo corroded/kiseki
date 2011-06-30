@@ -1,0 +1,25 @@
+.character-photos
+  - unless current_user.character.photo_url
+    - unless photos.empty?
+    
+      %h5 Choose your favorite avatar
+    
+      %ul
+        / %li
+        /   %a
+        /     = image_tag("http://www.google.com/s2/photos/public/AIbEiAIAAABECP3Rr-GMg57twQEiC3ZjYXJkX3Bob3RvKig4MTBlOGNjYTZhNmY4MjY5MGMxNTQwMTA3NGRlMDUyMjYyNmFhMTY4MAH7gGw4tTM130V7InSH8WYsyHHDog", :class => "avatar")
+        /     %small google profile
+        / %li
+        /   %a
+        /     = image_tag("http://profile.ak.fbcdn.net/hprofile-ak-snc4/186042_842342271_8264627_q.jpg", :class => "avatar")
+        /     %small facebook
+        - photos.each do |photo|
+          %li
+            %a{:href => "#{update_photo_url_user_path(current_user)}?photo_url=#{photo.url}", :class => "update-photo"}
+              = image_tag(photo.url, :class => "avatar")
+              %small
+                = photo.type
+                
+  - else
+    %p
+      = image_tag(current_user.character.photo_url, :class => "avatar")
