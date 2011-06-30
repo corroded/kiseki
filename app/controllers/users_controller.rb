@@ -4,4 +4,10 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
   end
+  
+  def welcome
+    @user = current_user
+    @character = current_user.character
+  end
+  
 end

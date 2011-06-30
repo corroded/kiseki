@@ -1,0 +1,18 @@
+%h3 Welcome!
+
+%p
+  Below are your character stats. As you update more of your social profiles, you will gain more stats and your character will grow stronger. Check back once in awhile to see how your character is doing. Soon, Kiseki will be ready to launch and your avatar will be put to the test!
+  
+%table.character-stats
+  %tr
+    %th &nbsp;
+    %th.base.value Base
+    %th.bonus.value Bonus
+    %th.total.value Total
+  
+  - Character::ALL_STATS.each do |stat|
+    %tr
+      %td= stat.titleize
+      %td.base.value= base_value_of(stat)
+      %td.bonus.value= bonus_value_of(stat)
+      %td.bonus.value= total_value_of(stat)
