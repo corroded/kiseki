@@ -8,24 +8,31 @@ class Character < ActiveRecord::Base
   before_create :generate_character
 
   def generate_rainmaker_stats
-    rainmaker_response = Rainmaker.person(user.email)
+    begin
+      rainmaker_response = Rainmaker.person(user.email)
     
-    # for every 10 followers in twitter, +1 charisma
-    self.charisma            += bonus_charisma(rainmaker_response.social_profiles)
+      # for every 10 followers in twitter, +1 charisma
+      self.charisma            += bonus_charisma(rainmaker_response.social_profiles)
     
-    # for every status message in fb and twitter?
-    self.wit                 += bonus_wit(rainmaker_response.social_profiles)
+      # for every status message in fb and twitter?
+      self.wit                 += bonus_wit(rainmaker_response.social_profiles)
     
-    # for every social profile, +1
-    self.stalkability        += bonus_stalkability(rainmaker_response)
+      # for every social profile, +1
+      self.stalkability        += bonus_stalkability(rainmaker_response)
     
-    self.save
+      self.save
+    rescue
+      -1
+    end
     # rainmaker_response
   end
 
-  def bonus_charisma(social_profiles)
-    twitter = social_profiles.select{ |sp| sp.type.eql?("twitter") }.first
+  def bonus_charisma(social_profiles=nil)
     begin
+      social_profiles = Rainmaker.person(user.email).social_profiles unless social_profiles
+      
+      twitter = social_profiles.select{ |sp| sp.type.eql?("twitter") }.first
+      
       if twitter
         followers_count = Twitter.user(twitter.username).followers_count
         return followers_count < 10 ? 1 : (followers_count/10)
@@ -37,14 +44,34 @@ class Character < ActiveRecord::Base
     end
   end
   
-  def bonus_wit
+  def bonus_wit(social_profiles=nil)
+    begin
+      social_profiles = Rainmaker.person(user.email).social_profiles unless social_profiles
+      
+      twitter = social_profiles.select{ |sp| sp.type.eql?("twitter") }.first
+      
+      if twitter
+        tweets = Twitter.user(twitter.username).statuses_count
+        Math.log(tweets, 3).floor
+      else
+        0
+      end
+    rescue
+      0
+    end
   end
   
-  def bonus_stalkability(response)
-    if response 
-      social_profile_count(response) + social_photo_count(response)
-    else
-      -5
+  def bonus_stalkability(response=nil)
+    begin
+      response = Rainmaker.person(user.email) unless response
+      
+      if response 
+        social_profile_count(response) + social_photo_count(response)
+      else
+        -2
+      end
+    rescue
+      0
     end
   end
   
