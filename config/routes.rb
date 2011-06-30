@@ -5,11 +5,9 @@ Kiseki::Application.routes.draw do
 
   devise_for :users
   
-  namespace :user do
-    root :to => "users#welcome"
-  end
-
-  resources :users, :only => :show
+  resources :users, :only => [:show]
+  
+  match "/welcome" => "users#welcome"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
