@@ -14,11 +14,11 @@ module CharactersHelper
     if bonus > 0
       #"<span class='positive'>+#{bonus}</span>"
       "+#{bonus}"
-    elsif
+    elsif bonus < 0
       "-#{bonus}"
       #"<span class='negative'>-#{bonus}</span>"
     else
-      # 0 case
+      0
     end
   end
   
