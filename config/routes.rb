@@ -6,7 +6,7 @@ Kiseki::Application.routes.draw do
   devise_for :users
   
   namespace :user do
-    root :to => "home#welcome"
+    root :to => "users#welcome"
   end
 
   resources :users, :only => :show
