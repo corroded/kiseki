@@ -1,7 +1,7 @@
 module CharactersHelper
   
   def base_value_of(stat)
-    current_user.character.send(stat.to_sym)
+    Character::BASE_STAT
   end
   
   def bonus_value_of(stat)

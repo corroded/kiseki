@@ -13,7 +13,7 @@ describe Character do
 
     it "should have default stats" do
       Character::ALL_STATS.each do |stat|
-        @character.send(stat.to_sym).should == Character::DEFAULT_STAT
+        @character.send(stat.to_sym).should == Character::BASE_STAT
       end
     end
   end
@@ -34,7 +34,7 @@ describe Character do
       @character.generate_rainmaker_stats
 
       Character::ALL_STATS.each do |stat|
-        @character.send(stat.to_sym).should == Character::DEFAULT_STAT + rainmaker_bonus
+        @character.send(stat.to_sym).should == Character::BASE_STAT + rainmaker_bonus
       end
     end
   end

@@ -1,6 +1,6 @@
 class Character < ActiveRecord::Base
 
-  DEFAULT_STAT = 5
+  BASE_STAT = 5
   ALL_STATS = ['charisma', 'wit', 'stalkability']
 
   belongs_to :user
@@ -67,9 +67,6 @@ class Character < ActiveRecord::Base
     
       # for every social profile, +1
       self.stalkability        = BASE_STAT + bonus_stalkability(rainmaker_response)
-      self.charisma = DEFAULT_STAT
-      self.wit = DEFAULT_STAT
-      self.stalkability = DEFAULT_STAT
     end
     
     def social_profile_count(response)
