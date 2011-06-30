@@ -35,7 +35,7 @@ class Character < ActiveRecord::Base
       
       if twitter
         followers_count = Twitter.user(twitter.username).followers_count
-        return followers_count < 10 ? 1 : (followers_count/10)
+        Math.log(followers_count, 2).floor
       else
         0
       end
