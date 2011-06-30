@@ -7,29 +7,9 @@ class Character < ActiveRecord::Base
 
   before_create :generate_character
 
-  def generate_rainmaker_stats
+  def bonus_charisma(social_profiles)
     begin
-      rainmaker_response = Rainmaker.person(user.email)
-    
-      # for every 10 followers in twitter, +1 charisma
-      self.charisma            += bonus_charisma(rainmaker_response.social_profiles)
-    
-      # for every status message in fb and twitter?
-      self.wit                 += bonus_wit(rainmaker_response.social_profiles)
-    
-      # for every social profile, +1
-      self.stalkability        += bonus_stalkability(rainmaker_response)
-    
-      self.save
-    rescue
-      -1
-    end
-    # rainmaker_response
-  end
-
-  def bonus_charisma(social_profiles=nil)
-    begin
-      social_profiles = Rainmaker.person(user.email).social_profiles unless social_profiles
+      #social_profiles = Rainmaker.person(user.email).social_profiles unless social_profiles
       
       twitter = social_profiles.select{ |sp| sp.type.eql?("twitter") }.first
       
@@ -44,9 +24,9 @@ class Character < ActiveRecord::Base
     end
   end
   
-  def bonus_wit(social_profiles=nil)
+  def bonus_wit(social_profiles)
     begin
-      social_profiles = Rainmaker.person(user.email).social_profiles unless social_profiles
+      #social_profiles = Rainmaker.person(user.email).social_profiles unless social_profiles
       
       twitter = social_profiles.select{ |sp| sp.type.eql?("twitter") }.first
       
@@ -61,9 +41,9 @@ class Character < ActiveRecord::Base
     end
   end
   
-  def bonus_stalkability(response=nil)
+  def bonus_stalkability(response)
     begin
-      response = Rainmaker.person(user.email) unless response
+      #response = Rainmaker.person(user.email) unless response
       
       if response 
         social_profile_count(response) + social_photo_count(response)
@@ -77,6 +57,16 @@ class Character < ActiveRecord::Base
   
   private
     def generate_character
+      rainmaker_response = Rainmaker.person(user.email)
+    
+      # for every 10 followers in twitter, +1 charisma
+      self.charisma            = BASE_STAT + bonus_charisma(rainmaker_response.social_profiles)
+    
+      # for every status message in fb and twitter?
+      self.wit                 = BASE_STAT + bonus_wit(rainmaker_response.social_profiles)
+    
+      # for every social profile, +1
+      self.stalkability        = BASE_STAT + bonus_stalkability(rainmaker_response)
       self.charisma = DEFAULT_STAT
       self.wit = DEFAULT_STAT
       self.stalkability = DEFAULT_STAT
