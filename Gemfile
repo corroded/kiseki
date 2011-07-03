@@ -33,11 +33,12 @@ group :production do
   gem 'therubyracer-heroku', '0.8.1.pre3'
 end
 
+gem "ruby-debug19"
+
 group :development do
   gem "rails-footnotes", ">= 3.7"
   gem 'annotate', :git => "https://github.com/ctran/annotate_models.git"
   gem "rspec-rails", ">= 2.0.1"
-  gem 'vcr'
 end
 
 group :test do
