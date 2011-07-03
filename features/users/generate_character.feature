@@ -10,12 +10,7 @@ Feature: Generate character
     And I fill in "Password" with "tester"
     And I fill in "Password confirmation" with "tester"
     And I press "Sign up"
-    Then I should see "Welcome! You have signed up successfully."
+    Then I should see "Choose your favorite avatar"
     And I should have a character with name "imacaterpillar@gmail.com's avatar"
-    
-  Scenario: Users sees augmented stats based on rainmaker API results
-    Given I am signed in as "imacaterpillar@gmail.com/tester"
-    And I am at the welcome page
-    When I click "Empower Avatar"
-    Then I should be on the empower page
-    And I should see the generated stats
+
+
